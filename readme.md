@@ -90,47 +90,6 @@ El archivo Excel corresponde a la fuente de datos original, mientras que los arc
 
 ---
 
-## Datos
-
-Uno de los conjuntos de datos utilizados por el proyecto corresponde al archivo:
-
-```text
-historico_mesas_operativas_2026-09-08_1002.xlsx
-```
-
-Dentro de este archivo se utiliza la hoja:
-
-```text
-Detalle por especie
-```
-
-A partir de estos datos se genera el archivo:
-
-```text
-especies.json
-```
-
-Este archivo contiene información agrupada por especie y permite a la página generar visualizaciones sin necesidad de procesar directamente el archivo Excel en el navegador.
-
-Por ejemplo:
-
-```json
-[
-    {
-        "especie": "NARANJA",
-        "cajas": 11891733
-    },
-    {
-        "especie": "MANDARINA",
-        "cajas": 9451996
-    }
-]
-```
-
-En este caso, el valor de `cajas` corresponde a la suma de **Cajas a inspección** para cada especie.
-
----
-
 ## Flujo a seguir
 
 ```text
