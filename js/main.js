@@ -1,25 +1,37 @@
-const ctx = document.getElementById("grafico");
+fetch("data/datos/especies.json")
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("No se pudo cargar especies.json");
+        }
 
-new Chart(ctx, {
-    type: "bar",
+        return response.json();
+    })
+    .then(datos => {
 
-    data: {
-        labels: [
-            "Manzanas",
-            "Naranjas",
-            "Plátanos",
-            "Peras"
-        ],
+        const etiquetas = datos.map(item => item.especie);
+        const valores = datos.map(item => item.cajas);
 
-        datasets: [
-            {
-                label: "Cantidad",
-                data: [30, 50, 40, 20]
+        const ctx = document.getElementById("grafico");
+
+        new Chart(ctx, {
+            type: "bar",
+
+            data: {
+                labels: etiquetas,
+
+                datasets: [
+                    {
+                        label: "Cajas a inspección",
+                        data: valores
+                    }
+                ]
+            },
+
+            options: {
+                responsive: true
             }
-        ]
-    },
-
-    options: {
-        responsive: true
-    }
-});
+        });
+    })
+    .catch(error => {
+        console.error("Error:", error);
+    });
