@@ -1,3 +1,19 @@
+let indiceActivo = null;
+let temporizadoresAudio = [];
+
+function reproducirCaidasFrutas(cajasActuales, maxCajas) {
+    // Cancelar sonidos de la barra anterior seleccionada
+    temporizadoresAudio.forEach(timer => clearTimeout(timer));
+    temporizadoresAudio = [];
+
+    //Determinamos la proporcion entre las cajas actuales y el maximo, tambien usamos un rango 1-12
+    //segun los impactos a sonar
+
+    const proporcion = Math.max(0, cajasActuales / maxCajas);
+    const ImpactosTotales = Math.max(1, Math.round(proporcion * 12));
+}
+
+
 fetch("data/datos/especies.json")
     .then(response => {
         if (!response.ok) {
